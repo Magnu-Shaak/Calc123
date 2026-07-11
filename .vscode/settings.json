@@ -1,0 +1,8 @@
+{
+    "python.analysis.extraPaths": [
+        "./kmk_firmware"
+    ],
+    "python.autoComplete.extraPaths": [
+        "./kmk_firmware"
+    ]
+}
