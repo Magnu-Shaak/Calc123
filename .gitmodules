@@ -1,3 +1,12 @@
 [submodule "kmk_firmware"]
 	path = kmk_firmware
 	url = https://github.com/KMKfw/kmk_firmware
+[submodule "lib/adafruit_displayio_ssd1306"]
+	path = lib/adafruit_displayio_ssd1306
+	url = https://github.com/adafruit/Adafruit_CircuitPython_DisplayIO_SSD1306
+[submodule "lib/adafruit_display_text"]
+	path = lib/adafruit_display_text
+	url = https://github.com/adafruit/Adafruit_CircuitPython_Display_Text
+[submodule "lib/adafruit_bus_device"]
+	path = lib/adafruit_bus_device
+	url = https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
