@@ -20,7 +20,8 @@ display = Display(
     width=128,
     height=32,
     flip = False, 
-    brightness=0.8, 
+    brightness=0.8,
+    brightness_step=0.1,
 )
 
 #Keyboard Layout
@@ -37,4 +38,6 @@ keyboard.keymap = [
 ]
 
 if __name__ == "__main__":
+
+    print("started")
     keyboard.go()
