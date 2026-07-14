@@ -35,6 +35,8 @@ display = Display(
     brightness=0.8,
     brightness_step=0.1,
 )
+
+
 #Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
@@ -43,6 +45,7 @@ combos.combos = [
 #    Chrod((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
+
 
 #Keyboard Layout
 keyboard.col_pins = (board.D7, board.D8, board.D9, board.D6)        # D7 D8, D9, D6
@@ -66,6 +69,4 @@ keyboard.keymap = [
 ]
 
 if __name__ == "__main__":
-
-    print("started")
     keyboard.go()
