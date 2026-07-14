@@ -41,7 +41,6 @@ display = Display(
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
     Chord((KC.KP_Asterisk, KC.KP_SLASH), KC.TO(0)),
-    Chord(KC.KP_Plus, KC.LCTL(KC.LSFT(KC.V)),KC.RECORD_SEQUENCE),
 #    Chrod((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
