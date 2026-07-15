@@ -1,41 +1,32 @@
-import Firmware.board as board                      # Board
+import board                                        # Board
+from oled_extention import init_oled                # Oled Display
 from kmk.kmk_keyboard import KMKKeyboard            # Keys
 from kmk.keys import KC
 from kmk.scanners import DiodeOrientation
-import busio                                        # OLED
-from kmk.extensions.display import Display, TextEntry, ImageEntry
-from kmk.extensions.display.ssd1306 import SSD1306
 from kmk.modules.layers import Layers               # Layer toggle
 from kmk.modules.combos import Combos, Chord, Sequence
 from kmk.modules.dynamic_sequences import DynamicSequences      #Dynamic Sequences
 from kmk.modules.tapdance import TapDance
+from kmk.extensions.media_keys import MediaKeys
 
 
 #Initialize
 keyboard = KMKKeyboard()
-keyboard.modules.append(Layers())
 combos = Combos()
+tapdance = TapDance()
+keyboard.modules.append(Layers())
 keyboard.modules.append(combos)
 keyboard.modules.append(DynamicSequences())
-tapdance = TapDance()
+keyboard.extensions.append(MediaKeys())
 keyboard.modules.append(tapdance)
 tapdance.tap_time = 750
 
-
-#OLED
-i2c_bus = busio.I2C(board.D5, board.D4)     # D4 - SDA, D5 - SCL
-driver = SSD1306(
-    i2c = i2c_bus,
-)
-display = Display(
-    display=driver,
-    width=128,
-    height=32,
-    flip = False, 
-    brightness=0.8,
-    brightness_step=0.1,
-)
-
+#OLED Display
+layer_names_map = {
+    0: "Numpad",
+    1: "Functions",
+}
+init_oled(keyboard, layer_names_map)
 
 #Combos
 combos.combos = [
@@ -44,7 +35,7 @@ combos.combos = [
 #    Chrod((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
-
+Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
 
 #Keyboard Layout
 keyboard.col_pins = (board.D7, board.D8, board.D9, board.D6)        # D7 D8, D9, D6
@@ -60,12 +51,16 @@ keyboard.keymap = [
         KC.N0, KC.KP_DOT, KC.LT(1,KC.ENTER), KC.KP_SLASH,
     ],
     [
-        KC.LCTL(KC.C), KC.LCTL(KC.V), KC.LCTL(KC.LSFT(KC.V)), KC.TRNS,
+        KC.LCTL(KC.C), Paste, KC.LALT(KC.TAB), KC.TRNS,
         KC.LCTL(KC.Z), KC.LCTL(KC.Y), KC.LCTL(KC.BSLASH), KC.TRNS,
-        KC.LCTL(KC.W), KC.LCTL(KC.LSFT(KC.T)), KC.LCTL(KC.W), KC.TRNS,
-        KC.LCTL(KC.LSFT(KC.F5)), KC.LCTL(KC.K), Record, KC.TRNS,
+        KC.LCTL(KC.W), KC.LCTL(KC.LSFT(KC.T)), KC.LCTL(KC.T), KC.TRNS,
+        KC.VOLU, KC.VOLD, Record, KC.TRNS,
     ],
 ]
+#       Copy, Paste, Swich Tap 
+#       Undo, Redo, Sp. Format
+#       Close, Reopen, New Tab
+#       Vol UP, Vol DN, Dynamic
 
 if __name__ == "__main__":
     keyboard.go()
