@@ -9,7 +9,6 @@ from kmk.modules.dynamic_sequences import DynamicSequences      #Dynamic Sequenc
 from kmk.modules.tapdance import TapDance
 from kmk.extensions.media_keys import MediaKeys
 
-
 #Initialize
 keyboard = KMKKeyboard()
 combos = Combos()
@@ -28,6 +27,64 @@ layer_names_map = {
 }
 init_oled (keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
 
+import math
+
+keyboard.calc_state = {
+    "a": 0,
+    "b": 0,
+    "opperater": None,
+    "input": "a",
+    "is_active": False   
+}
+operaters = {
+    "KC.KP_PLUS": "+",
+    "KC.KP_MINUS": "-",
+    "KC.ASTR": "*",
+    "KC.KP_SLASH": "/",
+    "KC.ENTER": "=",
+    }
+
+def calc_interpriter():
+    state = keyboard.calc_state
+    if not state["is_active"]:
+        return
+    
+    keyboard.active_layers = [0]
+    update = keyboard.matrix_update
+    if update and update.pressed:
+        kmk_key = keyboard.keymap[0][update.row][keyboard.column]
+        kmk_name = str(kmk_key)
+        if "KC.N" in kmk_name:
+            val = kmk_name.split("KC.N")[-1]
+#        elif KC.KP in kmk_name:
+#            val = kmk_name.split("KC.KP_")[-1]
+        elif kmk_name in operaters:
+            val = operaters.get("kmk_name")
+        else:
+            return "Error: value not found"
+
+
+
+
+def calculator(operator, a, b):
+    if operator == "+":
+        return (a + b)
+    elif operator == "-":
+        return (a - b)
+    elif operator == "*":
+        return (a * b)
+    elif operator == "^":
+        return (a ** b)
+    elif operator == "/":
+        return (a / b)
+    elif operator == "%":
+        return (a % b)
+    elif operator == "|":
+        return (a // b)
+    else:
+        return "Error"
+
+keyboard.before_matrix_scan.append(calc_interpriter)
 #Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
@@ -36,8 +93,8 @@ combos.combos = [
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
-Multiply = KC.TD(KC.ASTR, KC.CIRC)
-Divide = KC.TD(KC.KP_SLASH, KC.PERC, KC.PIPE)
+# Multiply = KC.TD(KC.ASTR, KC.CIRC)
+# Divide = KC.TD(KC.KP_SLASH, KC.PERC, KC.PIPE)
 
 
 #Keyboard Layout
@@ -50,8 +107,8 @@ keyboard.keymap = [
     [
         KC.N1, KC.N2, KC.N3, KC.KP_PLUS,
         KC.N4, KC.N5, KC.N6, KC.KP_MINUS,
-        KC.N7, KC.N8, KC.N9, Multiply,
-        KC.N0, KC.KP_DOT, KC.LT(1,KC.ENTER), Divide,
+        KC.N7, KC.N8, KC.N9, KC.ASTR,
+        KC.N0, KC.KP_DOT, KC.LT(1,KC.ENTER), KC.KP_SLASH,
     ],
     [
         KC.LCTL(KC.C), Paste, KC.LALT(KC.TAB), KC.TRNS,
