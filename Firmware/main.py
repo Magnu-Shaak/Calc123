@@ -20,20 +20,22 @@ keyboard.extensions.append(MediaKeys())
 keyboard.modules.append(tapdance)
 tapdance.tap_time = 750
 
-#OLED Display
+# OLED Display
 layer_names_map = {
     0: "Numpad",
     1: "Functions",
 }
-init_oled (keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
+init_oled (
+    keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
 
-import math
+# Local Calculator
+import math                     # TO_DO: ADD CLEAR AND BSPACE
 
 keyboard.calc_state = {
     "a": 0,
     "b": 0,
     "opperater": None,
-    "input": "a",
+    "raw_str": "",
     "is_active": False   
 }
 operaters = {
@@ -44,7 +46,7 @@ operaters = {
     "KC.ENTER": "=",
     }
 
-def calc_interpriter():         #Interprites KMK into str for processor
+def calc_interpreter():         #Interprites KMK into str for processor
     state = keyboard.calc_state
     if not state["is_active"]:
         return
@@ -61,8 +63,22 @@ def calc_interpriter():         #Interprites KMK into str for processor
         elif kmk_name in operaters:
             val = operaters.get("kmk_name")
         else:
-            return "Error: value not found"
+            state["raw_str"] =  "Error: value not found"
+            return
+    
+#    if val == "=":                      # Send forward
+        #calc_processor(state["raw_str"])
 
+    if val in operaters.keys():         # Multiple operaters
+        op_count = sum(state["raw_str"].count(val) for val in operaters.values())
+        if op_count >= 1:
+            state["raw_str"] = "Error: multiple opperaters found"
+            return
+
+    state["raw_str"] += val
+
+# def calc_processer():
+        
 
 def calculator(operator, a, b):
     if operator == "+":
@@ -83,8 +99,9 @@ def calculator(operator, a, b):
         return "Error"
 
 
-keyboard.before_matrix_scan.append(calc_interpriter)
-#Combos
+keyboard.before_matrix_scan.append(calc_interpreter)
+
+# Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
     Chord((KC.KP_Asterisk, KC.KP_SLASH), KC.TO(0)),
