@@ -44,7 +44,7 @@ operaters = {
     "KC.ENTER": "=",
     }
 
-def calc_interpriter():
+def calc_interpriter():         #Interprites KMK into str for processor
     state = keyboard.calc_state
     if not state["is_active"]:
         return
@@ -81,6 +81,7 @@ def calculator(operator, a, b):
         return (a // b)
     else:
         return "Error"
+
 
 keyboard.before_matrix_scan.append(calc_interpriter)
 #Combos
