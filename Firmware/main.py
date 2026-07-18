@@ -64,8 +64,6 @@ def calc_interpriter():
             return "Error: value not found"
 
 
-
-
 def calculator(operator, a, b):
     if operator == "+":
         return (a + b)
