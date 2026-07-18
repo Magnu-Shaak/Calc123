@@ -1,4 +1,4 @@
-import board
+import board        
 import busio
 import time
 import displayio
@@ -33,17 +33,17 @@ class LayerTracker(Extension):
     def before_hid_send(self, keyboard): pass
     def after_hid_send(self, keyboard): pass
 
-def init_oled(keyboard, layer_names_map):
+def init_oled(keyboard, layer_names_map, scl_pin, sda_pin, display_address=0x3C, display_hight=32, display_width=128):
     displayio.release_displays()                    # Reset display
 
-    i2c_bus = busio.I2C(board.D5, board.D4)         # Initialize display (D5 - SCL, D4 - SDA)
-    display_bus = I2CDisplayBus(i2c_bus, device_address=0x3C)
-    display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=128, height=32)
+    i2c_bus = busio.I2C(scl_pin, sda_pin)         # Initialize display (D5 - SCL, D4 - SDA)
+    display_bus = I2CDisplayBus(i2c_bus, device_address=display_address)
+    display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=display_width, height=display_hight)
  
     oled_group = displayio.Group()                 # Text to Bitmap engine
     layer_label = label.Lable(
         terminalio.FONT,
-        text="Jai Swaminarayan",
+        text="Initializing",
         color=0xFFFFFF,
         x=0,
         y=12
@@ -53,4 +53,3 @@ def init_oled(keyboard, layer_names_map):
     time.sleep(3.0) 
 
     keyboard.extensions.append(LayerTracker(layer_label, layer_names_map))
-

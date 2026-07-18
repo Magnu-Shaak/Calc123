@@ -26,7 +26,7 @@ layer_names_map = {
     0: "Numpad",
     1: "Functions",
 }
-init_oled(keyboard, layer_names_map)
+init_oled (keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
 
 #Combos
 combos.combos = [
@@ -36,6 +36,9 @@ combos.combos = [
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
+Multiply = KC.TD(KC.ASTR, KC.CIRC)
+Divide = KC.TD(KC.KP_SLASH, KC.PERC, KC.PIPE)
+
 
 #Keyboard Layout
 keyboard.col_pins = (board.D7, board.D8, board.D9, board.D6)        # D7 D8, D9, D6
@@ -45,10 +48,10 @@ keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
 keyboard.keymap = [
     [
-        KC.N1, KC.N2, KC.N3,KC.KP_PLUS,
+        KC.N1, KC.N2, KC.N3, KC.KP_PLUS,
         KC.N4, KC.N5, KC.N6, KC.KP_MINUS,
-        KC.N7, KC.N8, KC.N9, KC.KP_ASTERISK,
-        KC.N0, KC.KP_DOT, KC.LT(1,KC.ENTER), KC.KP_SLASH,
+        KC.N7, KC.N8, KC.N9, Multiply,
+        KC.N0, KC.KP_DOT, KC.LT(1,KC.ENTER), Divide,
     ],
     [
         KC.LCTL(KC.C), Paste, KC.LALT(KC.TAB), KC.TRNS,
