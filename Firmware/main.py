@@ -29,16 +29,14 @@ init_oled (
     keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
 
 # Local Calculator
-import math                     # TO_DO: ADD CLEAR AND BSPACE
+import math                     # TO_DO: ADD DOT, CLEAR, BSPACE
 
 keyboard.calc_state = {
-    "a": 0,
-    "b": 0,
-    "opperater": None,
     "raw_str": "",
     "is_active": False   
 }
-operaters = {
+state = keyboard.calc_state
+operator_list = {
     "KC.KP_PLUS": "+",
     "KC.KP_MINUS": "-",
     "KC.ASTR": "*",
@@ -47,7 +45,6 @@ operaters = {
     }
 
 def calc_interpreter():         #Interprites KMK into str for processor
-    state = keyboard.calc_state
     if not state["is_active"]:
         return
     
@@ -60,25 +57,31 @@ def calc_interpreter():         #Interprites KMK into str for processor
             val = kmk_name.split("KC.N")[-1]
 #        elif KC.KP in kmk_name:
 #            val = kmk_name.split("KC.KP_")[-1]
-        elif kmk_name in operaters:
-            val = operaters.get("kmk_name")
+        elif kmk_name in operator_list.keys():
+            val = operator_list.get(kmk_name)
+            operator = val
         else:
             state["raw_str"] =  "Error: value not found"
             return
     
-#    if val == "=":                      # Send forward
-        #calc_processor(state["raw_str"])
+    if val == "=":                      # Send forward
+        str_a, _, str_b = state["raw_str"].partition(operator)
+        a = float(str_a) if "." in str_a else int(str_a)
+        b = float(str_b) if "." in str_b else int(str_b)
+        result = calculator(operator, a, b)
 
-    if val in operaters.keys():         # Multiple operaters
-        op_count = sum(state["raw_str"].count(val) for val in operaters.values())
+        if isinstance(result, float) and result.is_integer():
+            result = int(result)
+        
+        return
+
+    if val in operator_list.keys():         # Multiple operators check
+        op_count = sum(state["raw_str"].count(val) for val in operator_list.values())
         if op_count >= 1:
             state["raw_str"] = "Error: multiple opperaters found"
             return
 
     state["raw_str"] += val
-
-# def calc_processer():
-        
 
 def calculator(operator, a, b):
     if operator == "+":
