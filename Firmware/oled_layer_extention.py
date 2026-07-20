@@ -16,20 +16,17 @@ class LayerTracker(Extension):
     def __init__(self, text_target, names_dict):
         self.text_target = text_target
         self.names_dict = names_dict
-
-    def on_layer_change(self, keyboard, layer_state):
-        active_list = keyboard.active_layers
-        if active_list:
-            current_layer = max(active_list)
-        else:
-            current_layer = 0
-        layer_name = self.names_dict.get(current_layer, f"LAYER {current_layer}")
-        self.text_target.text = layer_name
+    def after_matrix_scan(self, keyboard):
+            active_list = keyboard.active_layers
+            current_layer = max(active_list) if active_list else 0
+            if current_layer != self.last_layer:
+                self.last_layer = current_layer
+                layer_name = self.names_dict.get(current_layer, f"LAYER {current_layer}")
+                self.text_target.text = layer_name
 
     def on_runtime_init(self, keyboard): pass
     def during_lookahead(self, keyboard, active_layers): pass
     def before_matrix_scan(self, keyboard): pass  
-    def after_matrix_scan(self, keyboard): pass
     def before_hid_send(self, keyboard): pass
     def after_hid_send(self, keyboard): pass
 

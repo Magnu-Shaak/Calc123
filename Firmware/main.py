@@ -41,7 +41,7 @@ state = keyboard.calc_state
 operator_list = {
     "KC.KP_PLUS": "+",
     "KC.KP_MINUS": "-",
-    "KC.ASTR": "*",
+    "KC.KP_ASTERISK": "*",
     "KC.KP_SLASH": "/",
     }
 other_symbols_list = {
@@ -49,6 +49,19 @@ other_symbols_list = {
 #    "KC.DOT": ".",
 }
 
+def clear():
+    state["raw_str"] = ""
+    state["operator"] = ""
+    state["answer"] = ""
+
+def running_total(kmk_name):
+    if ["=", "Error"] in state["raw_str"]:
+        if kmk_name in operator_list.keys():
+            state["raw_str"] = state["answer"]
+            state["operator"] = ""
+        else: clear()
+
+    
 def calc_interpreter(keyboard):         #Interprites KMK into str for processor
     if not state["is_active"]:
         return
@@ -59,6 +72,8 @@ def calc_interpreter(keyboard):         #Interprites KMK into str for processor
     if update and update.pressed:
         kmk_key = keyboard.keymap[0][update.row][update.col]
         kmk_name = str(kmk_key)
+
+        running_total(kmk_name)
 
         if "KC.LT" in kmk_name and "KC.ENTER" in kmk_name:
             kmk_name = "KC.ENTER"
@@ -75,51 +90,61 @@ def calc_interpreter(keyboard):         #Interprites KMK into str for processor
         elif kmk_name in other_symbols_list.keys():
             val = other_symbols_list.get(kmk_name)
         else:
-            state["raw_str"] =  "Error: value not found"
             return
     
     if val is None: return
     elif val == "=":                      # Send forward
+        if not state["operator"] or state["operator"] not in state["raw_str"]:
+            clear()
+            return
+        
         str_a, operator, str_b = state["raw_str"].partition(state["operator"])
+        if not str_b: return
+
         a = float(str_a) if "." in str_a else int(str_a)
         b = float(str_b) if "." in str_b else int(str_b)
         result = calculator(operator, a, b)
 
-        if isinstance(result, float) and result.is_integer():
+        if "Error" in result:
+            clear()
+            state["raw_str"] = "Error: Invalid Calculation"
+            return
+        
+        elif isinstance(result, float) and result.is_integer():
             result = int(result)
-        
-        # Display on OLED
 
-        state["raw_str"] = ""
+        state["answer"] = str(result)
+        state["raw_str"] += val
         state["raw_str"] += str(result)
-        
+        state["operator"] = ""
+
         return
 
-    elif val in operator_list.values():         # Multiple operators check
-        op_count = sum(state["raw_str"].count(val) for val in operator_list.values())
-        if op_count >= 1:
-            state["raw_str"] = "Error: multiple opperaters found"
-            return
 
     state["raw_str"] += val
 
 def calculator(operator, a, b):
-    if operator == "+":
-        return (a + b)
-    elif operator == "-":
-        return (a - b)
-    elif operator == "*":
-        return (a * b)
-    elif operator == "^":
-        return (a ** b)
-    elif operator == "/":
-        return (a / b)
-    elif operator == "%":
-        return (a % b)
-    elif operator == "|":
-        return (a // b)
-    else:
+    try:
+        if operator == "+":
+            return (a + b)
+        elif operator == "-":
+            return (a - b)
+        elif operator == "*":
+            return (a * b)
+        elif operator == "^":
+            return (a ** b)
+        elif operator == "/":
+            return (a / b)
+        elif operator == "%":
+            return (a % b)
+        elif operator == "|":
+            if b == "0": return "Error: Div by 0"
+            return (a // b)
+        else:
+            return "Error"
+    except Exception:
         return "Error"
+
 
 
 keyboard.after_matrix_scan.append(calc_interpreter)
@@ -127,8 +152,9 @@ keyboard.after_matrix_scan.append(calc_interpreter)
 # Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
-    Chord((KC.KP_ASTERISK, KC.KP_SLASH), KC.TO(0)),
 #    Chord((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
+    Chord((KC.KP_ASTERISK, KC.KP_SLASH), KC.TO(0)),
+
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
@@ -156,7 +182,7 @@ keyboard.keymap = [         # Maybe add another layer for Calculator active?
         KC.VOLU, KC.VOLD, Record, KC.TRNS,
     ],
 ]
-#       Copy, Paste, Swich Tap 
+#       Copy, Paste, Switch Tap 
 #       Undo, Redo, Sp. Format
 #       Close, Reopen, New Tab
 #       Vol UP, Vol DN, Dynamic

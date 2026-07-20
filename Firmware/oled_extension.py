@@ -17,15 +17,25 @@ class DisplayManager(Extension):
     def __init__(self, text_target, names_dict):
         self.text_target = text_target
         self.names_dict = names_dict
+        self.last_layer = None
 
     def after_matrix_scan(self, keyboard):
+        calc_state = getattr(keyboard, "calc_state", None)
+        if calc_state and calc_state.get("is_active", False):
+            current_text = calc_state.get("raw_str", "") or "0"
+            for op in ["+", "-", "*", "/", "="]:
+                current_text = current_text.replace(op, f" {op} ")
+
+            if current_text != self.text_target:
+                self.text_target = current_text
+                return
+
         active_list = keyboard.active_layers
-        if active_list:
-            current_layer = max(active_list)
-        else:
-            current_layer = 0
-        layer_name = self.names_dict.get(current_layer, f"LAYER {current_layer}")
-        self.text_target.text = layer_name
+        current_layer = max(active_list) if active_list else 0
+        if current_layer != self.last_layer:
+            self.last_layer = current_layer
+            layer_name = self.names_dict.get(current_layer, f"LAYER {current_layer}")
+            self.text_target.text = layer_name
 
 
     def on_runtime_init(self, keyboard): pass
