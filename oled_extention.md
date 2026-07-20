@@ -1,6 +1,6 @@
-# OLED Extention
-This is my OLED extention I made in CircuitPy that is compatable to use with KMK. 
-I Don't belive anyone will see this, but if you are, use the oled_extention_templete.py file. The oled_extention is configured to the board I am using.
+# OLED extension
+This is my OLED extension I made in CircuitPy that is compatable to use with KMK. 
+I Don't belive anyone will see this, but if you are, use the oled_layer_extension.py file. The oled_extension is configured to the board I am using.
 
 
 ## List of Supported features below:
@@ -15,7 +15,7 @@ Display Chips:
 ## Configure
 ```python
 # main.py or code.py
-from oled_extention import init_oled                # Import
+from oled_extension import init_oled                # Import
 
 # Name this whatever, just be consistant with the name in the init_oled function
 layer_names_map = {  

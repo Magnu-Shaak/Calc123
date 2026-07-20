@@ -29,7 +29,7 @@ init_oled (
     keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
 
 # Local Calculator
-import math                     # TO_DO: ADD DOT, CLEAR, BSPACE
+import math                     # TO_DO: ADD DOT, CLEAR, BSPACE,
 
 keyboard.calc_state = {
     "raw_str": "",
@@ -142,7 +142,7 @@ keyboard.row_pins = (board.D10, board.D0, board.D2, board.D3)       # D10, D0, D
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
 
-keyboard.keymap = [
+keyboard.keymap = [         # Maybe add another layer for Calculator active? 
     [
         KC.N1, KC.N2, KC.N3, KC.KP_PLUS,
         KC.N4, KC.N5, KC.N6, KC.KP_MINUS,
