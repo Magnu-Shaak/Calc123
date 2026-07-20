@@ -1,5 +1,5 @@
 import board                                        # Board
-from oled_extention import init_oled                # Oled Display
+from oled_extension import init_oled                # Oled Display
 from kmk.kmk_keyboard import KMKKeyboard            # Keys
 from kmk.keys import KC
 from kmk.scanners import DiodeOrientation
@@ -33,7 +33,9 @@ import math                     # TO_DO: ADD DOT, CLEAR, BSPACE
 
 keyboard.calc_state = {
     "raw_str": "",
-    "is_active": False   
+    "answer": "",
+    "operator": "",
+    "is_active": False,   
 }
 state = keyboard.calc_state
 operator_list = {
@@ -41,31 +43,44 @@ operator_list = {
     "KC.KP_MINUS": "-",
     "KC.ASTR": "*",
     "KC.KP_SLASH": "/",
-    "KC.ENTER": "=",
     }
+other_symbols_list = {
+    "KC.ENTER": "=",
+#    "KC.DOT": ".",
+}
 
-def calc_interpreter():         #Interprites KMK into str for processor
+def calc_interpreter(keyboard):         #Interprites KMK into str for processor
     if not state["is_active"]:
         return
     
-    keyboard.active_layers = [0]
+    val = None
+    keyboard.modules.layers.activate_layer(0)
     update = keyboard.matrix_update
     if update and update.pressed:
-        kmk_key = keyboard.keymap[0][update.row][keyboard.column]
+        kmk_key = keyboard.keymap[0][update.row][update.col]
         kmk_name = str(kmk_key)
+
+        if "KC.LT" in kmk_name and "KC.ENTER" in kmk_name:
+            kmk_name = "KC.ENTER"
+
         if "KC.N" in kmk_name:
             val = kmk_name.split("KC.N")[-1]
 #        elif KC.KP in kmk_name:
 #            val = kmk_name.split("KC.KP_")[-1]
         elif kmk_name in operator_list.keys():
+            if state["operator"]:                   # Multiple Operater Check
+                return
             val = operator_list.get(kmk_name)
-            operator = val
+            state["operator"] = val
+        elif kmk_name in other_symbols_list.keys():
+            val = other_symbols_list.get(kmk_name)
         else:
             state["raw_str"] =  "Error: value not found"
             return
     
-    if val == "=":                      # Send forward
-        str_a, _, str_b = state["raw_str"].partition(operator)
+    if val is None: return
+    elif val == "=":                      # Send forward
+        str_a, operator, str_b = state["raw_str"].partition(state["operator"])
         a = float(str_a) if "." in str_a else int(str_a)
         b = float(str_b) if "." in str_b else int(str_b)
         result = calculator(operator, a, b)
@@ -73,9 +88,14 @@ def calc_interpreter():         #Interprites KMK into str for processor
         if isinstance(result, float) and result.is_integer():
             result = int(result)
         
+        # Display on OLED
+
+        state["raw_str"] = ""
+        state["raw_str"] += str(result)
+        
         return
 
-    if val in operator_list.keys():         # Multiple operators check
+    elif val in operator_list.values():         # Multiple operators check
         op_count = sum(state["raw_str"].count(val) for val in operator_list.values())
         if op_count >= 1:
             state["raw_str"] = "Error: multiple opperaters found"
@@ -102,13 +122,13 @@ def calculator(operator, a, b):
         return "Error"
 
 
-keyboard.before_matrix_scan.append(calc_interpreter)
+keyboard.after_matrix_scan.append(calc_interpreter)
 
 # Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
-    Chord((KC.KP_Asterisk, KC.KP_SLASH), KC.TO(0)),
-#    Chrod((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
+    Chord((KC.KP_ASTERISK, KC.KP_SLASH), KC.TO(0)),
+#    Chord((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
