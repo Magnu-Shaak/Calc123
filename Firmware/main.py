@@ -30,6 +30,7 @@ init_oled (
 
 # Local Calculator
 import math                     # TO_DO: ADD DOT, CLEAR, BSPACE,
+og_process_key = keyboard.process_key
 
 keyboard.calc_state = {
     "raw_str": "",
@@ -55,73 +56,11 @@ def clear():
     state["answer"] = ""
 
 def running_total(kmk_name):
-    if ["=", "Error"] in state["raw_str"]:
+    if "=" in state["raw_str"] or "Error" in state["raw_str"]:
         if kmk_name in operator_list.keys():
             state["raw_str"] = state["answer"]
             state["operator"] = ""
         else: clear()
-
-    
-def calc_interpreter(keyboard):         #Interprites KMK into str for processor
-    if not state["is_active"]:
-        return
-    
-    val = None
-    keyboard.modules.layers.activate_layer(0)
-    update = keyboard.matrix_update
-    if update and update.pressed:
-        kmk_key = keyboard.keymap[0][update.row][update.col]
-        kmk_name = str(kmk_key)
-
-        running_total(kmk_name)
-
-        if "KC.LT" in kmk_name and "KC.ENTER" in kmk_name:
-            kmk_name = "KC.ENTER"
-
-        if "KC.N" in kmk_name:
-            val = kmk_name.split("KC.N")[-1]
-#        elif KC.KP in kmk_name:
-#            val = kmk_name.split("KC.KP_")[-1]
-        elif kmk_name in operator_list.keys():
-            if state["operator"]:                   # Multiple Operater Check
-                return
-            val = operator_list.get(kmk_name)
-            state["operator"] = val
-        elif kmk_name in other_symbols_list.keys():
-            val = other_symbols_list.get(kmk_name)
-        else:
-            return
-    
-    if val is None: return
-    elif val == "=":                      # Send forward
-        if not state["operator"] or state["operator"] not in state["raw_str"]:
-            clear()
-            return
-        
-        str_a, operator, str_b = state["raw_str"].partition(state["operator"])
-        if not str_b: return
-
-        a = float(str_a) if "." in str_a else int(str_a)
-        b = float(str_b) if "." in str_b else int(str_b)
-        result = calculator(operator, a, b)
-
-        if "Error" in result:
-            clear()
-            state["raw_str"] = "Error: Invalid Calculation"
-            return
-        
-        elif isinstance(result, float) and result.is_integer():
-            result = int(result)
-
-        state["answer"] = str(result)
-        state["raw_str"] += val
-        state["raw_str"] += str(result)
-        state["operator"] = ""
-
-        return
-
-
-    state["raw_str"] += val
 
 def calculator(operator, a, b):
     try:
@@ -134,6 +73,7 @@ def calculator(operator, a, b):
         elif operator == "^":
             return (a ** b)
         elif operator == "/":
+            if b == "0": return "Error: Div by 0"
             return (a / b)
         elif operator == "%":
             return (a % b)
@@ -144,11 +84,67 @@ def calculator(operator, a, b):
             return "Error"
     except Exception:
         return "Error"
+    
+def calc_interpreter(key, is_pressed, coordinate):         #Interprites KMK into str for processor
+    if not state["is_active"]:
+        return og_process_key(key, is_pressed, coordinate)
+    
+    val = None
+    keyboard.modules.layers.activate_layer(0)
+    if is_pressed:
+        kmk_name = str(key)
+
+        running_total(kmk_name)
+
+        if "KC.LT" in kmk_name and "KC.ENTER" in kmk_name:
+            kmk_name = "KC.ENTER"
+
+        if "KC.N" in kmk_name:
+            val = kmk_name.split("KC.N")[-1]
+#        elif KC.KP in kmk_name:
+#            val = kmk_name.split("KC.KP_")[-1]
+        elif kmk_name in operator_list.keys():
+            if state["operator"]:                   # Multiple Operater Check
+                return None
+            val = operator_list.get(kmk_name)
+            state["operator"] = val
+        elif kmk_name in other_symbols_list.keys():
+            val = other_symbols_list.get(kmk_name)
+        else:
+            return None
+    
+    if val is None: return None
+    elif val == "=":                      # Send forward
+        if not state["operator"] or state["operator"] not in state["raw_str"]:
+            clear()
+            return None
+        
+        str_a, operator, str_b = state["raw_str"].partition(state["operator"])
+        if not str_b: return None
+        a = float(str_a) if "." in str_a else int(str_a)
+        b = float(str_b) if "." in str_b else int(str_b)
+        result = calculator(operator, a, b)
+
+        if isinstance(result, str) and "Error" in result:
+            clear()
+            state["raw_str"] = "Error"
+            return None
+        
+        elif isinstance(result, float) and result.is_integer():
+            result = int(result)
+
+        state["answer"] = str(result)
+        state["raw_str"] += val
+        state["raw_str"] += str(result)
+        state["operator"] = ""
+
+        return None
 
 
+    state["raw_str"] += val
+    return None
 
-keyboard.after_matrix_scan.append(calc_interpreter)
-
+keyboard.process_key = calc_interpreter
 # Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
