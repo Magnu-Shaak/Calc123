@@ -1,7 +1,7 @@
 import board                                        # Board
 from oled_extension import init_oled                # Oled Display
 from kmk.kmk_keyboard import KMKKeyboard            # Keys
-from kmk.keys import KC
+from kmk.keys import KC, Key
 from kmk.scanners import DiodeOrientation
 from kmk.modules.layers import Layers               # Layer toggle
 from kmk.modules.combos import Combos, Chord, Sequence
@@ -31,6 +31,16 @@ init_oled (
 # Local Calculator
 import math                     # TO_DO: ADD DOT, CLEAR, BSPACE,
 og_process_key = keyboard.process_key
+
+class RemoverKeys(Key):
+    def __init__(self, key, **kwargs):
+        super().__init__(**kwargs)
+        self.name = self.name
+    def __str__(self): return self.name
+    def __repr__(self): return self.__str__()
+
+Clear = RemoverKeys("KC.CLEAR")
+Backspace = RemoverKeys("KC.BACKSPACE")
 
 keyboard.calc_state = {
     "raw_str": "",
