@@ -60,6 +60,8 @@ operator_list = {
 other_symbols_list = {
     "KC.ENTER": "=",
     "KC.DOT": ".",
+    "KC.CLEAR": "_",
+    "KC.BACKSPACE": "(",
 }
 
 def clear():
@@ -123,17 +125,22 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
                 return None
             val = operator_list.get(kmk_name)
             state["operator"] = val
-        elif kmk_name in other_symbols_list:        # Duplicates chacks, depends on symbol
+        elif kmk_name in other_symbols_list:        # Duplicates checks, depends on symbol
             if kmk_name == "KC.Dot":
-                if not state["operator"] and "." not in state["a"]: # If no operator(so a) and no decimal alr, add the decimal
-                    val = "."
-                elif state["operator"] and "." not in state["b"]:   # If operator (so b) 
-                    val = "."
+                # If no operator(so a) and no decimal alr, --OR-- If operator (so b) and no decimal alr
+                if (not state["operator"] and "." not in state["a"]) or (state["operator"] and "." not in state["b"]):
+                    val = "."       # Add decimal
                 else:
                     return None
             elif kmk_name == "KC.ENTER" and "=" in state["raw_str"]:    # If "=" alr there and another abt to be entered
                 return None
-                
+            elif kmk_name == "KC.CLEAR":            # Remover Keys checks 
+                clear()
+                return
+            elif kmk_name == "KC.BACKSPACE":
+                state["raw_str"] = state["raw_str"][:-1]
+                val = ""
+            else: return None
         else:
             return None
     
