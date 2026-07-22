@@ -118,8 +118,10 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
                 if not state["operator"] and "." not in state["a"]: # If no operator(so a) and no decimal alr, add the decimal
                     val = "."
                 elif state["operator"] and "." not in state["b"]:   # If operator (so b) 
-
-            elif kmk_name == "KC.ENTER" and "=" in state["raw_str"]:
+                    val = "."
+                else:
+                    return None
+            elif kmk_name == "KC.ENTER" and "=" in state["raw_str"]:    # If "=" alr there and another abt to be entered
                 return None
                 
         else:
