@@ -56,6 +56,9 @@ operator_list = {
     "KC.KP_MINUS": "-",
     "KC.KP_ASTERISK": "*",
     "KC.KP_SLASH": "/",
+    "KC.CIRCUMFLEX": "**",
+    "KC.PERCENT": "%",
+    "KC.PIPE": "//",
     }
 other_symbols_list = {
     "KC.ENTER": "=",
@@ -81,6 +84,9 @@ def running_total(kmk_name):
 
 def calculator(operator, a, b):
     try:
+        ans = eval(state["raw_str"])
+        return ans
+    except Exception:
         if operator == "+":
             return (a + b)
         elif operator == "-":
@@ -93,15 +99,14 @@ def calculator(operator, a, b):
             if b == "0": return "Error: Div by 0"
             return (a / b)
         elif operator == "%":
+            if b == "0": return "Error: Div by 0"
             return (a % b)
         elif operator == "|":
             if b == "0": return "Error: Div by 0"
             return (a // b)
         else:
             return "Error"
-    except Exception:
-        return "Error"
-    
+
 def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK imputs for the calculator function
     if not state["is_active"]:
         return og_process_key(key, is_pressed, coordinate=None)
@@ -184,15 +189,16 @@ keyboard.process_key = calc_interpreter
 
 # Combos
 combos.combos = [
-    Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
-#    Chord((KC.KC_PLUS, KC_ASRERISK), KC.TG(2))
-    Chord((KC.KP_ASTERISK, KC.KP_SLASH), KC.TO(0)),
-
+    Chord((KC.KP_DOT, KC.KP_PLUS), KC.TG(1)),      # Toggles
+    Chord((KC.KP_VOLD, KC.KP_PLUS), KC.TG(1)),
+    Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(0)),
+    Chord((KC.KP_PLUS, KC.ASTR), KC.CIRC),           # Operators
+    Chord((KC.KP_PLUS, KC.KP_SLASH), KC.PERC),
+    Chord((KC.KP_MINUS, KC.KP_SLASH), KC.PIPE),
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
-# Multiply = KC.TD(KC.ASTR, KC.CIRC)
-# Divide = KC.TD(KC.KP_SLASH, KC.PERC, KC.PIPE)
+
 
 
 #Keyboard Layout

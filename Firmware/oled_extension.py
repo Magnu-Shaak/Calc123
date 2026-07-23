@@ -23,7 +23,7 @@ class DisplayManager(Extension):
         calc_state = getattr(keyboard, "calc_state", None)
         if calc_state and calc_state.get("is_active", False):
             current_text = calc_state.get("raw_str", "") or "0"
-            for op in ["+", "-", "*", "/", "="]:
+            for op in ["+", "-", "*", "/", "**", "%", "//", "="]:
                 current_text = current_text.replace(op, f" {op} ")
 
             if current_text != self.text_target:
