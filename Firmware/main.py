@@ -60,8 +60,8 @@ operator_list = {
 other_symbols_list = {
     "KC.ENTER": "=",
     "KC.DOT": ".",
-    "KC.CLEAR": "_",
-    "KC.BACKSPACE": "(",
+    "KC.CLEAR": "",
+    "KC.BACKSPACE": "",
 }
 
 def clear():
@@ -114,7 +114,7 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
         kmk_name = str(key)
         running_total(kmk_name)
 
-        if "KC.LT" in kmk_name and "KC.ENTER" in kmk_name: kmk_name = "KC.ENTER"
+        if "KC.ENTER" in kmk_name: kmk_name = "KC.ENTER"
 
         if "KC.N" in kmk_name:
             val = kmk_name.split("KC.N")[-1]
@@ -127,20 +127,21 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
             state["operator"] = val
         elif kmk_name in other_symbols_list:        # Duplicates checks, depends on symbol
             if kmk_name == "KC.Dot":
-                # If no operator(so a) and no decimal alr, --OR-- If operator (so b) and no decimal alr
-                if (not state["operator"] and "." not in state["a"]) or (state["operator"] and "." not in state["b"]):
-                    val = "."       # Add decimal
-                else:
+                # If no operator(so a) and decimal, --OR-- If operator (so b) and  decimal [ie. Invalid Inputs]
+                if (not state["operator"] and "." in state["a"]) or (state["operator"] and "." not in state["b"]):
+                    return None     # Don't add decimal
+                pass
+            elif kmk_name == "KC.ENTER":    # If "=" alr there and another abt to be entered
+                if "=" in state["raw_str"]:
                     return None
-            elif kmk_name == "KC.ENTER" and "=" in state["raw_str"]:    # If "=" alr there and another abt to be entered
-                return None
+                pass
             elif kmk_name == "KC.CLEAR":            # Remover Keys checks 
                 clear()
-                return
+                return None
             elif kmk_name == "KC.BACKSPACE":
                 state["raw_str"] = state["raw_str"][:-1]
-                val = ""
             else: return None
+            val = other_symbols_list.get(kmk_name)
         else:
             return None
     
@@ -172,14 +173,15 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
         return None
 
     state["raw_str"] += val
-    if state["operator"]:   # and state["operator"] in state[""]
-        state["a"], _, state["b"] = state["raw_str"].partition(state["operator"])
+    if state["operator"]:   # and state["operator"] in state["raw_str"]
+        state["a"], state[operator], state["b"] = state["raw_str"].partition(state["operator"])
     else:
         state["a"] = state["raw_str"]
     
     return None
 
 keyboard.process_key = calc_interpreter
+
 # Combos
 combos.combos = [
     Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(1)),
