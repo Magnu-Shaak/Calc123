@@ -187,11 +187,17 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
 
 keyboard.process_key = calc_interpreter
 
+def calc_mode_toggle(key, keyboard, *args):
+    state["is_active"] = not state["is_active"]
+    return keyboard
+
+Calculate_Key = Key(on_press=calc_toggle)
 # Combos
 combos.combos = [
     Chord((KC.KP_DOT, KC.KP_PLUS), KC.TG(1)),      # Toggles
     Chord((KC.KP_VOLD, KC.KP_PLUS), KC.TG(1)),
-    Chord((KC.KP_PLUS, KC.KP_MINUS), KC.TG(0)),
+    Chord((KC.KP_PLUS, KC.KP_MINUS, KC.ASTR, KC.KP_SLASH), KC.TG(0)),
+    Chord((KC.KP_PLUS, KC.KP_MINUS), Calculate_Key),
     Chord((KC.KP_PLUS, KC.ASTR), KC.CIRC),           # Operators
     Chord((KC.KP_PLUS, KC.KP_SLASH), KC.PERC),
     Chord((KC.KP_MINUS, KC.KP_SLASH), KC.PIPE),
