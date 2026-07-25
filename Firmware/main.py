@@ -123,8 +123,8 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
 
         if "KC.N" in kmk_name:
             val = kmk_name.split("KC.N")[-1]
-#        elif KC.KP in kmk_name:
-#            val = kmk_name.split("KC.KP_")[-1]
+ #        elif KC.KP in kmk_name:
+ #            val = kmk_name.split("KC.KP_")[-1]
         elif kmk_name in operator_list:
             if state["operator"]:                   # Multiple Operater Check
                 return None
