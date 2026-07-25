@@ -222,10 +222,13 @@ keyboard.keymap = [         # Maybe add another layer for Calculator active?
     ],
     [
         KC.LCTL(KC.C), Paste, KC.LALT(KC.TAB), KC.TRNS,
-        KC.LCTL(KC.Z), KC.LCTL(KC.Y), KC.LCTL(KC.BSLASH), KC.TRNS,
-        KC.LCTL(KC.W), KC.LCTL(KC.LSFT(KC.T)), KC.LCTL(KC.T), KC.TRNS,
-        KC.VOLU, KC.VOLD, Record, KC.TRNS,
+        KC.LCTL(KC.Z), OLD, Record, KC.TRNS,
     ],
+    [KC.LCTL(KC.Y), KC.LCTL(KC.BSLASH), KC.TRNS,
+        KC.LCTL(KC.W), KC.LCTL(KC.LSFT(KC.T)), KC.LCTL(KC.T), KC.TRNS,
+        KC.VOLU, KC.V
+        
+    ]
 ]
 #       Copy, Paste, Switch Tap 
 #       Undo, Redo, Sp. Format
@@ -234,3 +237,8 @@ keyboard.keymap = [         # Maybe add another layer for Calculator active?
 
 if __name__ == "__main__":
     keyboard.go()
+    print{"a0"}
+    print("b1")
+    print("c2")
+    print("d4")
+    print("e5")
