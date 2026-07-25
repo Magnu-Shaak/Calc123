@@ -1,2 +1,2 @@
-# Calc123
+# Numpad
 Making a Numpad accessory that also works as a stand-alone calculator!
