@@ -6,6 +6,7 @@ Making a Numpad accessory that also works as a stand-alone calculator!
 
 <img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
 
+Demo Link: [https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2FMagnu-Shaak%2FCalc123%2Ftree%2Fmain%2FPCB](url)
 Features:
   -Numberpad (0-9, 4 operations,"=", ".")
   -Custom Shortcuts Layer
