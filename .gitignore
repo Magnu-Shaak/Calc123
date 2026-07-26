@@ -2,4 +2,3 @@ board.py
 kmk_firmware/
 .vscode/
 .vscode/settings.json
-*.code-workspace

@@ -26,7 +26,8 @@ layer_names_map = {
     1: "Functions",
 }
 init_oled (
-    keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128)
+    keyboard, layer_names_map, board.D5, board.D4, 0x3C, 32, 128
+    )
 
 # Local Calculator
 import math                     # TO_DO: ADD DOT, CLEAR, BSPACE,
@@ -48,7 +49,8 @@ keyboard.calc_state = {
     "operator": "",
     "a": "",
     "b": "",
-    "is_active": False,   
+    "is_active": False,
+    "negative_numbers": False
 }
 state = keyboard.calc_state
 operator_list = {
@@ -77,6 +79,7 @@ def clear():
 def running_total(kmk_name):
     if "=" in state["raw_str"]:
         if kmk_name in operator_list:
+            if not state["negative_numbers"]: abs(int(state["answer"]))     # If negative numbers mode is off, make negative number into posative, temporary fix
             state["a"] = state["answer"]
             state["raw_str"] = state["answer"]
             state["operator"] = ""
@@ -237,8 +240,3 @@ keyboard.keymap = [         # Maybe add another layer for Calculator active?
 
 if __name__ == "__main__":
     keyboard.go()
-    print{"a0"}
-    print("b1")
-    print("c2")
-    print("d4")
-    print("e5")

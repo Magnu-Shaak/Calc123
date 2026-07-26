@@ -1,4 +1,3 @@
-import board        # My own OLED Extention
 import busio
 import time
 import displayio
@@ -14,9 +13,10 @@ except ImportError:
 
 # For Displaying Layer Name
 class DisplayManager(Extension):
-    def __init__(self, text_target, names_dict):
-        self.text_target = text_target
+    def __init__(self, names_dict, display_text, notes_text):
+        self.display_text = display_text
         self.names_dict = names_dict
+        self.notes_text = notes_text
         self.last_layer = None
 
     def after_matrix_scan(self, keyboard):
@@ -25,18 +25,25 @@ class DisplayManager(Extension):
             current_text = calc_state.get("raw_str", "") or "0"
             for op in ["+", "-", "*", "/", "**", "%", "//", "="]:
                 current_text = current_text.replace(op, f" {op} ")
+            
+            if calc_state.get("negative_numbers", False):
+                notes = "Calc_mode, -Num. ACTV"
+            else:
+                notes = "Calc_mode"
+            
 
-            if current_text != self.text_target:
-                self.text_target = current_text
-                return
+            if (current_text != self.display_text) or (notes != notes_text):
+                self.display_text = current_text
+            
+            return
 
         active_list = keyboard.active_layers
         current_layer = max(active_list) if active_list else 0
         if current_layer != self.last_layer:
             self.last_layer = current_layer
             layer_name = self.names_dict.get(current_layer, f"LAYER {current_layer}")
-            self.text_target.text = layer_name
-
+            self.display_text.text = layer_name
+            self.notes_text = ""
 
     def on_runtime_init(self, keyboard): pass
     def during_lookahead(self, keyboard, active_layers): pass
@@ -52,15 +59,26 @@ def init_oled(keyboard, layer_names_map, scl_pin, sda_pin, display_address=0x3C,
     display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=display_width, height=display_height)
  
     oled_group = displayio.Group()                 # Text to Bitmap engine
-    display_output = label.Label(
+    top_active_layer = label.Label(
         terminalio.FONT,
         text="Jai Swaminarayan",
         color=0xFFFFFF,
+        scale=1
         x=0,
         y=12
     )
-    oled_group.append(display_output)
+    calc_notes = layer.Label(
+        terminalio.FONT,
+        text="Calc_mode",
+        scale=1,
+        x=0,
+        y=25
+    )
+
+    oled_group.append(top_active_layer)
+    oled_group.append(calc_notes)
+
     display.root_group = oled_group
     time.sleep(3.0) 
 
-    keyboard.extensions.append(DisplayManager(display_output, layer_names_map))
+    keyboard.extensions.append(DisplayManager(layer_names_map, top_active_layer, calc_notes))
