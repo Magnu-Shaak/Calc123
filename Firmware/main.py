@@ -128,15 +128,32 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
             val = kmk_name.split("KC.N")[-1]
  #        elif KC.KP in kmk_name:
  #            val = kmk_name.split("KC.KP_")[-1]
+        elif kmk_name == "KC.MINUS" and state["negative_numbers"]:
+            kmk_name = "KC.UNDERSCORE"
+            if state["a"] == "":
+                state["a"] += "_"
+            elif state["operator"] and state["b"] == "":
+                state["b"] += "_"
         elif kmk_name in operator_list:
             if state["operator"]:                   # Multiple Operater Check
                 return None
-            val = operator_list.get(kmk_name)
-            state["operator"] = val
+            else:
+                val = ""
+                if state["a"] == "":
+                    state["a"] == "0"
+                    state["raw_str"] += "0"
+                try:
+                    temp_a = float(state["a"])
+                    val = operator_list.get(kmk_name)
+                    state["operator"] = val
+
+                except Exception:
+                    state["raw_str"] = "Error: Invalid_Num. a"
+                    return
         elif kmk_name in other_symbols_list:        # Duplicates checks, depends on symbol
             if kmk_name == "KC.Dot":
                 # If no operator(so a) and decimal, --OR-- If operator (so b) and  decimal [ie. Invalid Inputs]
-                if (not state["operator"] and "." in state["a"]) or (state["operator"] and "." not in state["b"]):
+                if (not state["operator"] and "." in state["a"]) or (state["operator"] and "." in state["b"]):
                     return None     # Don't add decimal
                 pass
             elif kmk_name == "KC.ENTER":    # If "=" alr there and another abt to be entered
@@ -152,7 +169,7 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
             val = other_symbols_list.get(kmk_name)
         else:
             return None
-    
+
     if val is None: return None
     elif val == "=":                      # Send forward
         if not state["operator"] or state["operator"] not in state["raw_str"]:
@@ -167,7 +184,7 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
 
         if isinstance(result, str) and "Error" in result:
             clear()
-            state["raw_str"] = "Error"
+            state["raw_str"] = "Error: Calc_Error"
             return None
         
         elif isinstance(result, float) and result.is_integer():
@@ -193,8 +210,10 @@ keyboard.process_key = calc_interpreter
 def calc_mode_toggle(key, keyboard, *args):
     state["is_active"] = not state["is_active"]
     return keyboard
-
+def negative_numbers_toggle(key,keyboard, *args):
+    state["negative_numbers"]
 Calculate_Key = Key(on_press=calc_toggle)
+Negative_Mode_Toggle = Key(on_press=negative_numbers_toggle)
 # Combos
 combos.combos = [
     Chord((KC.KP_DOT, KC.KP_PLUS), KC.TG(1)),      # Toggles
@@ -204,6 +223,7 @@ combos.combos = [
     Chord((KC.KP_PLUS, KC.ASTR), KC.CIRC),           # Operators
     Chord((KC.KP_PLUS, KC.KP_SLASH), KC.PERC),
     Chord((KC.KP_MINUS, KC.KP_SLASH), KC.PIPE),
+    Chord((KC.KP_MINUS, KC.Dot), Negative_Mode_Toggle)
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))

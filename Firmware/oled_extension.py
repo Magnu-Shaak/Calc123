@@ -28,6 +28,7 @@ class DisplayManager(Extension):
             
             if calc_state.get("negative_numbers", False):
                 notes = "Calc_mode, -Num. ACTV"
+                current_text = current_text.replace("_", "-")
             else:
                 notes = "Calc_mode"
             
