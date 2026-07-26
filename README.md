@@ -6,7 +6,12 @@ Making a Numpad accessory that also works as a stand-alone calculator!
 
 <img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
 
-Demo Link: https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2FMagnu-Shaak%2FCalc123%2Ftree%2Fmain%2FPCB
+PCB Demo Link: https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2FMagnu-Shaak%2FCalc123%2Ftree%2Fmain%2FPCB
+
+OnShape Demo Link: https://cad.onshape.com/documents/84cb760b87cada0103a9576e/w/b2684d83a2c2c7ea59db64e2/e/a0996dbd1c890850b6caf7a1?renderMode=0&uiState=6a6621498755df13821d28c6
+
+Code is visable under Firmware/
+
 Features:
   -Numberpad (0-9, 4 operations,"=", ".")
   -Custom Shortcuts Layer
