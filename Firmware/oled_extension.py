@@ -64,17 +64,10 @@ def init_oled(keyboard, layer_names_map, scl_pin, sda_pin, display_address=0x3C,
         terminalio.FONT,
         text="Jai Swaminarayan",
         color=0xFFFFFF,
-        scale=1
-        x=0,
-        y=12
-    )
-    calc_notes = layer.Label(
-        terminalio.FONT,
-        text="Calc_mode",
         scale=1,
         x=0,
-        y=25
-    )
+        y=12,
+     )
 
     oled_group.append(top_active_layer)
     oled_group.append(calc_notes)
