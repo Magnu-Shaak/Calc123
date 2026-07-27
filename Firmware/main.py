@@ -49,6 +49,7 @@ keyboard.calc_state = {
     "operator": "",
     "a": "",
     "b": "",
+    "op_index": None,
     "is_active": False,
     "negative_numbers": False
 }
@@ -71,10 +72,11 @@ other_symbols_list = {
 
 def clear():
     state["raw_str"] = ""
-    state["operator"] = ""
     state["answer"] = ""
+    state["operator"] = ""
     state["a"] = ""
     state["b"] = ""
+    state["op_index"] = ""
 
 def running_total(kmk_name):
     if "=" in state["raw_str"]:
@@ -83,6 +85,9 @@ def running_total(kmk_name):
             state["a"] = state["answer"]
             state["raw_str"] = state["answer"]
             state["operator"] = ""
+            state["b"] = ""
+            state["answer"] = ""
+
         else: clear()
 
 def calculator(operator, a, b):
@@ -124,32 +129,35 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
 
         if "KC.ENTER" in kmk_name: kmk_name = "KC.ENTER"
 
+        if(
+            state["negative_numbers"]           # Is negative number mode active
+            and kmk_name == "KC.MINUS"          # Is this a negative sign
+            and ((not state["operator"] and not state["a"])# <--- allows 
+            or (state["operator"] and not state["b"]))  # Is it a/b and are they fit to be negative num
+        ):
+            val = "-"
+            kmk_name = "KC.UNDERSCORE"
+
         if "KC.N" in kmk_name:
             val = kmk_name.split("KC.N")[-1]
  #        elif KC.KP in kmk_name:
  #            val = kmk_name.split("KC.KP_")[-1]
-        elif kmk_name == "KC.MINUS" and state["negative_numbers"]:
-            kmk_name = "KC.UNDERSCORE"
-            if state["a"] == "":
-                state["a"] += "_"
-            elif state["operator"] and state["b"] == "":
-                state["b"] += "_"
+
         elif kmk_name in operator_list:
             if state["operator"]:                   # Multiple Operater Check
                 return None
             else:
-                val = ""
-                if state["a"] == "":
-                    state["a"] == "0"
-                    state["raw_str"] += "0"
-                try:
+                try:                                # If there is no a value, don't count this input
                     temp_a = float(state["a"])
-                    val = operator_list.get(kmk_name)
-                    state["operator"] = val
-
                 except Exception:
                     state["raw_str"] = "Error: Invalid_Num. a"
-                    return
+                    return None
+                val = operator_list.get(kmk_name)
+                state["operator"] = val
+                state["op_index"] = len(state["raw_str"])
+
+
+
         elif kmk_name in other_symbols_list:        # Duplicates checks, depends on symbol
             if kmk_name == "KC.Dot":
                 # If no operator(so a) and decimal, --OR-- If operator (so b) and  decimal [ie. Invalid Inputs]
@@ -165,8 +173,10 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
                 return None
             elif kmk_name == "KC.BACKSPACE":
                 state["raw_str"] = state["raw_str"][:-1]
-            else: return None
+            else:
+                return None
             val = other_symbols_list.get(kmk_name)
+    
         else:
             return None
 
@@ -191,15 +201,16 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
             result = int(result)
 
         state["answer"] = str(result)
-        state["raw_str"] += val
+        state["raw_str"] += f" {val} "
         state["raw_str"] += str(result)
-        state["operator"] = ""
 
         return None
 
     state["raw_str"] += val
     if state["operator"]:   # and state["operator"] in state["raw_str"]
-        state["a"], state[operator], state["b"] = state["raw_str"].partition(state["operator"])
+        op_index = state["op_index"]
+        raw_str = state["raw_str"]
+        state["a"], state["b"] = raw_str[:op_index], raw_str[op_index:]
     else:
         state["a"] = state["raw_str"]
     
@@ -211,9 +222,11 @@ def calc_mode_toggle(key, keyboard, *args):
     state["is_active"] = not state["is_active"]
     return keyboard
 def negative_numbers_toggle(key,keyboard, *args):
-    state["negative_numbers"]
+    state["negative_numbers"] = not state["negative_numbers"]
+
 Calculate_Key = Key(on_press=calc_toggle)
 Negative_Mode_Toggle = Key(on_press=negative_numbers_toggle)
+
 # Combos
 combos.combos = [
     Chord((KC.KP_DOT, KC.KP_PLUS), KC.TG(1)),      # Toggles

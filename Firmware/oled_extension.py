@@ -5,7 +5,6 @@ import terminalio
 import adafruit_displayio_ssd1306
 from adafruit_display_text import label
 from kmk.extensions import Extension
-from main import calc_state
 try:
     from i2cdisplaybus import I2CDisplayBus
 except ImportError:
@@ -20,15 +19,13 @@ class DisplayManager(Extension):
         self.last_layer = None
 
     def after_matrix_scan(self, keyboard):
-        calc_state = getattr(keyboard, "calc_state", None)
-        if calc_state and calc_state.get("is_active", False):
-            current_text = calc_state.get("raw_str", "") or "0"
-            for op in ["+", "-", "*", "/", "**", "%", "//", "="]:
-                current_text = current_text.replace(op, f" {op} ")
+        state = getattr(keyboard, "calc_state", None)
+        if state and state["is_active"]:
+            current_text = state["raw_str"]
+            current_text = current_text[:state["op_index"]] + f" {state['operator']} " + current_text[state["op_index"] + 1:]
             
-            if calc_state.get("negative_numbers", False):
+            if state["a"]:
                 notes = "Calc_mode, -Num. ACTV"
-                current_text = current_text.replace("_", "-")
             else:
                 notes = "Calc_mode"
             
