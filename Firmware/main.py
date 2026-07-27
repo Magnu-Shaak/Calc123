@@ -181,8 +181,10 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
         if not state["operator"] or state["operator"] not in state["raw_str"]:
             clear()
             return None
-        
-        str_a, operator, str_b = state["raw_str"].partition(state["operator"])
+
+        op_index = state["op_index"]
+        raw_str = state["raw_str"]
+        str_a, operator, str_b = raw_str[:op_index], raw_str[op_index], raw_str[op_index:]
         if not str_b: return None
         a = float(str_a) if "." in str_a else int(str_a)
         b = float(str_b) if "." in str_b else int(str_b)
