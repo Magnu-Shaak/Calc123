@@ -142,7 +142,6 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
             val = kmk_name.split("KC.N")[-1]
  #        elif KC.KP in kmk_name:
  #            val = kmk_name.split("KC.KP_")[-1]
-
         elif kmk_name in operator_list:
             if state["operator"]:                   # Multiple Operater Check
                 return None
@@ -155,9 +154,6 @@ def calc_interpreter(key, is_pressed, coordinate=None):         #Interprites KMK
                 val = operator_list.get(kmk_name)
                 state["operator"] = val
                 state["op_index"] = len(state["raw_str"])
-
-
-
         elif kmk_name in other_symbols_list:        # Duplicates checks, depends on symbol
             if kmk_name == "KC.Dot":
                 # If no operator(so a) and decimal, --OR-- If operator (so b) and  decimal [ie. Invalid Inputs]
@@ -240,8 +236,6 @@ combos.combos = [
 ]
 Record = KC.TD(KC.PLAY_SEQUENCE, KC.RECORD_SEQUENCE(), KC.STOP_SEQUENCE())
 Paste = KC.TD(KC.LCTL(KC.V),KC.LCTL(KC.LSFT(KC.V)))
-
-
 
 #Keyboard Layout
 keyboard.col_pins = (board.D7, board.D8, board.D9, board.D6)        # D7 D8, D9, D6
