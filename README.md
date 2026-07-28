@@ -19,6 +19,7 @@ Features:
     -Does Not Type on Screen
     -Answer Displayed on OLED screen
 
+BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.md](url)
 
 
 
