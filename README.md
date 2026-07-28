@@ -16,10 +16,10 @@ BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.
 
 Features:
   -Numberpad (0-9, 4 operations,"=", ".")
+    -Has a built in Local Calculator that displays on the OLED
   -Custom Shortcuts Layer
-  -Built in Local Calculator on Numberpad Layer
-    -Does Not Type on Screen
-    -Answer Displayed on OLED screen
+  -Displays Layer on OLED
+    -Use it yourself, Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
 
 
 
