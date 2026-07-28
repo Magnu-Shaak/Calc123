@@ -15,11 +15,11 @@ Code is visable under Firmware/
 BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.md](url)
 
 Features:
-  -Numberpad (0-9, 4 operations,"=", ".")
-    -Has a built in Local Calculator that displays on the OLED
-  -Custom Shortcuts Layer
-  -Displays Layer on OLED
-    -Use it yourself, Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
+- Numberpad (0-9, 4 operations,"=", ".")
+    + Has a built in Local Calculator that displays on the OLED
+- Custom Shortcuts Layer
+- Displays Layer on OLED
+    + Use it yourself: Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
 
 
 
