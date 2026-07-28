@@ -1,6 +1,6 @@
 # OLED extension
 This is my OLED extension I made in CircuitPy that is compatable to use with KMK. 
-I Don't belive anyone will see this, but if you are, use the oled_layer_extension.py file. The oled_extension is configured to the board I am using.
+I Don't belive anyone will see this, but if you are, use the oled_layer_extension.py file, under the Firmware folder. The oled_extension is configured to the board I am using.
 
 
 ## List of Supported features below:
