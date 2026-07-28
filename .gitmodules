@@ -1,3 +1,6 @@
+# I used this to set up my github Codespace.
+# Other than this, just set up python in settings.json
+
 [submodule "kmk_firmware"]
 	path = kmk_firmware
 	url = https://github.com/KMKfw/kmk_firmware
