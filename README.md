@@ -12,7 +12,7 @@ OnShape Demo Link (click on searchbar and enter agian to load properly): https:/
 
 Code is visable under Firmware/
 
-BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.md](url)
+BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.csv](url)
 
 Features:
 - Numberpad (0-9, 4 operations,"=", ".")
