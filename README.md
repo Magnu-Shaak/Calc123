@@ -1,19 +1,6 @@
 # Numpad
 Making a Numpad accessory that also works as a stand-alone calculator!
 
-
-3d render in Onshape
-
-<img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
-
-PCB Demo Link: https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2FMagnu-Shaak%2FCalc123%2Ftree%2Fmain%2FPCB
-
-OnShape Demo Link (click on searchbar and enter agian to load properly): https://cad.onshape.com/documents/84cb760b87cada0103a9576e/w/b2684d83a2c2c7ea59db64e2/e/a0996dbd1c890850b6caf7a1?renderMode=0&uiState=6a6621498755df13821d28c6
-
-Code is visable under Firmware/
-
-BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.csv](url)
-
 Features:
 - Numberpad (0-9, 4 operations,"=", ".")
     + Has a built in Local Calculator that displays on the OLED
@@ -21,9 +8,49 @@ Features:
 - Displays Layer on OLED
     + Use it yourself: Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
 
+3d render in Onshape
 
+<img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
 
+## Demo links
 
+PCB Demo [Link](https://kicanvas.org/?repo=https%3A%2F%2Fgithub.com%2FMagnu-Shaak%2FCalc123%2Ftree%2Fmain%2FPCB)
+
+OnShape Demo [Link](https://cad.onshape.com/documents/84cb760b87cada0103a9576e/w/b2684d83a2c2c7ea59db64e2/e/a0996dbd1c890850b6caf7a1?renderMode=0&uiState=6a6621498755df13821d28c6)
+(click on search bar and hit enter again to load properly)
+
+Code is visible under the Firmware folder
+
+## Asembly
+
+BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.csv](url)
+
+ [Insert BOM table here]
+
+0 - Gather your Materials (PCB, Case parts, Devboard, and a usb-c to [something] cable to connect to your computer
+1 - Download Circuit Python (v9.2.9) from circuitpython.org [here]([https://circuitpython.org/board/seeeduino_xiao_rp2040](https://adafruit-circuit-python.s3.amazonaws.com/bin/seeeduino_xiao_rp2040/en_US/adafruit-circuitpython-seeeduino_xiao_rp2040-en_US-9.2.9.uf2))
+2 - Download KMK (as .zip) from the kmk_firmware repo on github [here](https://github.com/KMKfw/kmk_firmware)
+3 - Download the dependency files from the circuitpython.org/libraries (for the circuit python 9.x version) or from [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/download/20260729/adafruit-circuitpython-bundle-9.x-mpy-20260729.zip)
+4 - Download "main.py" and "oled_extension.py" from this repo. They are stored under the "Production" Folder
+4 - Mount the XIAO RP 2040 to your computer
+    -Hold the 'B' (boot) bottom
+    -Connect it to the computer via a usb-c to [anything on your computer] cable
+    -Release the 'B' bottom
+5 - Upload Circuit Python's .u2f file onto the XIAO RP 2040
+    -It Should self eject and reconnect as CIRCUITPY
+6 - From the kmk_firmware zip file, Upload the "KMK" folder and boot.py into the root of the CIRCUITPY drive
+6.5 - If there is not already a "lib" folder in the root of your CIRCUITPY drive, make one
+7 - From the circuit python bundle zip file, Upload the "adafruit_bus_device" and "adafruit_display_text" folders and "adafruit_displayio_ssd1306" file into the lib folder of your CIRCUITPY drive
+8 - Eject your CIRCUITPY drive, and disconnect your XIAO RP 2040 from your computer.
+9 - Solder your XIAO RP 2040 devboard and 16 diodes (make sure they are oriented correctly) to the back of your PCB
+10 - Place the Top Plate onto the front of your PCB, and align it with the mx key switch positions
+11 - Solder the Key switches to the front of your PCB, through the plate
+12 - Install the Heatset Inserts to the bottom of your Case
+13 - Place the PCB and Top Plate onto the supports in the case
+14 - Screw the plate onto your PCB
+14.5 - Add the Key Caps onto the MX Switches
+15 - Slide in the Custom Insert
+16 - Connect your Macropad to the computer and begin using it.
 
 
 
