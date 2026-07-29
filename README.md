@@ -28,28 +28,46 @@ BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.
  [Insert BOM table here]
 
 0 - Gather your Materials (PCB, Case parts, Devboard, and a usb-c to [something] cable to connect to your computer
+
 1 - Download Circuit Python (v9.2.9) from circuitpython.org [here]([https://circuitpython.org/board/seeeduino_xiao_rp2040](https://adafruit-circuit-python.s3.amazonaws.com/bin/seeeduino_xiao_rp2040/en_US/adafruit-circuitpython-seeeduino_xiao_rp2040-en_US-9.2.9.uf2))
+
 2 - Download KMK (as .zip) from the kmk_firmware repo on github [here](https://github.com/KMKfw/kmk_firmware)
+
 3 - Download the dependency files from the circuitpython.org/libraries (for the circuit python 9.x version) or from [here](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/download/20260729/adafruit-circuitpython-bundle-9.x-mpy-20260729.zip)
+
 4 - Download "main.py" and "oled_extension.py" from this repo. They are stored under the "Production" Folder
-4 - Mount the XIAO RP 2040 to your computer
+
+5 - Mount the XIAO RP 2040 to your computer
     -Hold the 'B' (boot) bottom
     -Connect it to the computer via a usb-c to [anything on your computer] cable
     -Release the 'B' bottom
-5 - Upload Circuit Python's .u2f file onto the XIAO RP 2040
+
+6 - Upload Circuit Python's .u2f file onto the XIAO RP 2040
     -It Should self eject and reconnect as CIRCUITPY
-6 - From the kmk_firmware zip file, Upload the "KMK" folder and boot.py into the root of the CIRCUITPY drive
-6.5 - If there is not already a "lib" folder in the root of your CIRCUITPY drive, make one
-7 - From the circuit python bundle zip file, Upload the "adafruit_bus_device" and "adafruit_display_text" folders and "adafruit_displayio_ssd1306" file into the lib folder of your CIRCUITPY drive
-8 - Eject your CIRCUITPY drive, and disconnect your XIAO RP 2040 from your computer.
-9 - Solder your XIAO RP 2040 devboard and 16 diodes (make sure they are oriented correctly) to the back of your PCB
-10 - Place the Top Plate onto the front of your PCB, and align it with the mx key switch positions
-11 - Solder the Key switches to the front of your PCB, through the plate
-12 - Install the Heatset Inserts to the bottom of your Case
-13 - Place the PCB and Top Plate onto the supports in the case
-14 - Screw the plate onto your PCB
-14.5 - Add the Key Caps onto the MX Switches
-15 - Slide in the Custom Insert
+
+7 - From the kmk_firmware zip file, Upload the "KMK" folder and boot.py into the root of the CIRCUITPY drive
+
+8.5 - If there is not already a "lib" folder in the root of your CIRCUITPY drive, make one
+
+9 - From the circuit python bundle zip file, Upload the "adafruit_bus_device" and "adafruit_display_text" folders and "adafruit_displayio_ssd1306" file into the lib folder of your CIRCUITPY drive
+
+10 - Eject your CIRCUITPY drive, and disconnect your XIAO RP 2040 from your computer.
+
+11 - Solder your XIAO RP 2040 devboard and 16 diodes (make sure they are oriented correctly) to the back of your PCB
+
+12 - Place the Top Plate onto the front of your PCB, and align it with the mx key switch positions
+
+13 - Solder the Key switches to the front of your PCB, through the plate
+
+14 - Install the Heatset Inserts to the bottom of your Case
+
+15 - Place the PCB and Top Plate onto the supports in the case
+
+16 - Screw the plate onto your PCB
+
+16.5 - Add the Key Caps onto the MX Switches
+
+17 - Slide in the Custom Insert
 16 - Connect your Macropad to the computer and begin using it.
 
 
