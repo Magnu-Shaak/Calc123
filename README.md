@@ -79,6 +79,15 @@ BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.
 
 ## All Images
 
+  Schematic (Controller)
+
+<img width="396" height="148" alt="image" src="https://github.com/user-attachments/assets/a686e848-113f-484f-980b-cca4f1314c52" />
+
+  Schematic (Key Array)
+
+<img width="550" height="254" alt="image" src="https://github.com/user-attachments/assets/51550049-dc31-4964-bbb7-284b34d0fd5d" />
+
+
   PCB Design (KiCad)
 
 <img width="463" height="573" alt="image" src="https://github.com/user-attachments/assets/02ac58bb-bbfc-46d3-9afb-14df1b330701" />
