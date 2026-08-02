@@ -1,10 +1,10 @@
-Item, Quantity, Price, Link, Notes
-(JLC) PCB, 1, , , 
-Devboard, 1, , , 
-1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Clear
-Cherry MX Switches (10 peice), 2, $0.99, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Clear; Different colors each time (1 set per color limit)
-Kaih Hotswap Sockets?, 16, , , 
-0.91 in. OLED, 1, , , 
-Blank Keycaps, 16, , , 
-M3x16mm Skrews, 4, , , 
-M3x5mmx4mm heatset Inserts (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Clear; Cheapest is $1 despite size
+Item, Quantity, Price, Link, Source, Notes
+(JLC) PCB, 1, , , ,
+Devboard, 1, , , , 
+1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Clear, 
+Cherry MX Switches (10 peice), 2, $0.99, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Clear, Different colors each time (1 set per color limit)
+Kaih Hotswap Sockets?, 16, , , , 
+0.91 in. OLED, 1, , , , 
+Blank Keycaps, 16, , , , 
+M3x16mm Skrews, 4, , , , 
+M3x5mmx4mm heatset Inserts (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Clear, Cheapest is $1 despite size
