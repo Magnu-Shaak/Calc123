@@ -1,10 +1,11 @@
 Item, Quantity, Price, Link, Source, Notes
-(JLC) PCB, 1, , , ,
+PCB (5 peice), 1, $30.00, https://cart.jlcpcb.com/quote?stencilLayer=2&stencilWidth=78&stencilLength=100&stencilCounts=5&plateType=1&spm=Jlcpcb.Homepage.1010, JLC PCB, $2 board, $27.82 shipping (DHL Express DDP)
 Devboard, 1, , , , 
-1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Clear, 
-Cherry MX Switches (10 peice), 2, $0.99, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Clear, Different colors each time (1 set per color limit)
-Kaih Hotswap Sockets?, 16, , , , 
-0.91 in. OLED, 1, , , , 
-Blank Keycaps, 16, , , , 
-M3x16mm Skrews, 4, , , , 
-M3x5mmx4mm heatset Inserts (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Clear, Cheapest is $1 despite size
+1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Choice, 
+Cherry MX Switches (10 peice), 2 , $0.99, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Choice, Limit 1 per color:1 white, 1 silver
+0.91 in. OLED (5 peice), 1, $0.99, https://www.aliexpress.us/item/3256808453793642.html, AliExpress Choice, 
+White Keycaps (50 peice; white), 1, $0.99, https://www.aliexpress.us/item/3256810533781399.html, AliExpress Choice, Lowest Price Option*
+M3x16mm Screws (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Choice, Lowest Price Option*
+M3x5mmx4mm heatset Inserts (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Choice, Lowest Price Option*
+
+# *Lowest Price Option. Smaller quantities only avalible for same price.
