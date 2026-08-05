@@ -12,7 +12,7 @@ Features:
 - Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url)
  
 | Item | Quantity | Price | Link | Source | Notes |
-|---|---|---|---|---|---|
+|---|---|---|---|---|-------------------------------------|
  | PCB (5 peice) | 1 | $23.59 | https://www.pcbway.com/QuickOrderOnline.aspx | PCB way | I used actual checkout page for a more accurate total (Shipping DDP with USPS) |
  | Devboard | 1 |  |  |  | 
  | 1N4148 THT Diodes (100 peice) | 1 | $0.99 | https://www.aliexpress.us/item/3256809192784213.html | AliExpress Choice | Lowest Price Option* |
