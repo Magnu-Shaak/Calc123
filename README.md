@@ -25,7 +25,10 @@ Features:
  | Soldering Irorn  |  |  |  |  | 
  | Solder  |  |  |  | ,
  | Solder Wick  |  |  |  |  |  |
- | *Footnote |  |  | *Lowest Price Option. Smaller quantities only available for same price |  | 
+ | | | | | | | 
+ | Total | | | | | | 
+ 
+ *Footnote Lowest Price Option. Smaller quantities only available for same price |  | 
  
 
 3d render in Onshape
