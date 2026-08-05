@@ -52,7 +52,7 @@ BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.
 
 0 - Gather your Materials (PCB, Case parts, Devboard, and a usb-c to [something] cable to connect to your computer
 
-1 - Download Circuit Python (v9.2.9) from circuitpython.org [here](https://adafruit-circuit-python.s3.amazonaws.com/bin/seeeduino_xiao_rp2040/en_US/adafruit-circuitpython-seeeduino_xiao_rp2040-en_US-9.2.9.uf2)
+1 - Download Circuit Python (v9.2.9) from circuitpython.org for the XIAO RP 2040[here](https://adafruit-circuit-python.s3.amazonaws.com/bin/seeeduino_xiao_rp2040/en_US/adafruit-circuitpython-seeeduino_xiao_rp2040-en_US-9.2.9.uf2)
 
 2 - Download KMK (as .zip) from the kmk_firmware repo on github [here](https://github.com/KMKfw/kmk_firmware)
 
