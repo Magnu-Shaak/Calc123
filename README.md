@@ -8,6 +8,10 @@ Features:
 - Displays Layer on OLED
     + Use it yourself: Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
 
+3d render in Onshape
+
+<img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
+
 ## BOM
 - Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url)
  
@@ -30,15 +34,6 @@ Features:
  | Total | | | | | | 
  
  *Footnote Lowest Price Option. Smaller quantities only available for same price |  | 
-
- Soldering Irorn	1	$39.99	https://www.amazon.com/PINECIL-Smart-Mini-Portable-Soldering/dp/B096X6SG13	Amazon	Pinecil: Cheapest heat adjustable soldering Iron
-Soldering Stand & Sponge	1	$4.99	https://www.microcenter.com/product/659033/Mini-soldering_stand_with_sponge	Micro Center	Eclipse Enterprice Mini
-Solder (50 g)	1	$8.99	https://www.amazon.com/MAIYUM-63-37-Solder-Electrical-Soldering/dp/B075WB98FJ?th=1	Amazon	MAIYUM 63-37 Tin-Lead Rosin Core Solder Wire 0.8mm,50g g
-Solder Wick	1	$4.99	https://www.microcenter.com/product/693022/Desoldering_Wick	MicroCenter	iFixit
-
-3d render in Onshape
-
-<img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
 
 ## Demo links
 
