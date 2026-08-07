@@ -1,7 +1,6 @@
-Assembled Case Files Here.
+In this Folder (CAD):
+- Assembled Model Files
 
-
-Individual Part Files are under Production.
-
-
-Part Files aranged for 3d printing are under Production.
+In Production Folder:
+- Individual Part Files
+- 3d printing aranged file (All Parts)
