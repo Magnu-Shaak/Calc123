@@ -17,15 +17,14 @@ Features:
  
 | Item | Quantity | Total Price | Link | Source | Notes | 
 | --- | --- | --- | --- | --- | --- | 
- | PCB (5 peice) | 1 | $12.86 | https://www.pcbway.com/QuickOrderOnline.aspx | PCB way | From Actual Checkout page (Shipping DDP with Global Direct Shipping) | 
+ | PCB (5 piece) | 1 | $12.86 | https://www.pcbway.com/QuickOrderOnline.aspx | PCB way | From Actual Checkout page (Shipping DDP with Global Direct Shipping) | 
  | Devboard | 1 | $9.99 | amazon.com/Pre-Soldered-Microcontroller-MicroPython-CircuitPython-Interfaces/dp/B09NNVNW7M | Amazon | XIAO rp2040  | 
- | 1N4148 THT Diodes (100 peice) | 1 | $0.99 | https://www.aliexpress.us/item/3256809192784213.html | AliExpress Choice | Lowest Price Option* | 
- | Cherry MX Switches (10 peice) | 2  | $0.99 | https://www.aliexpress.us/item/3256807705085808.html | AliExpress Choice | "Limit 1 per color:1 white | 1 silver" | 
- | 0.91 in. OLED (5 peice) | 1 | $0.99 | https://www.aliexpress.us/item/3256808453793642.html | AliExpress Choice | Lowest Price Option* | 
- | White Keycaps (50 peice
- white) | 1 | $0.99 | https://www.aliexpress.us/item/3256810533781399.html | AliExpress Choice | Lowest Price Option* | 
- | M3x16mm Screws (100 peice) | 1 | $0.99 | https://www.aliexpress.us/item/2255800046543591.html | AliExpress Choice | Lowest Price Option* | 
- | M3x5mmx4mm heatset Inserts (100 peice) | 1 | $0.99 | https://www.aliexpress.us/item/2255800046543591.html | AliExpress Choice | Lowest Price Option* | 
+ | 1N4148 THT Diodes (100 piece) | 1 | $0.99 | https://www.aliexpress.us/item/3256809192784213.html | AliExpress Choice | Lowest Price Option* | 
+ | Cherry MX Switches (10 piece) | 2  | $0.99 | https://www.aliexpress.us/item/3256807705085808.html | AliExpress Choice | "Limit 1 per color:1 white | 1 silver" | 
+ | 0.91 in. OLED (5 piece) | 1 | $0.99 | https://www.aliexpress.us/item/3256808453793642.html | AliExpress Choice | Lowest Price Option* | 
+ | White Keycaps (50 piece; white) | 1 | $0.99 | https://www.aliexpress.us/item/3256810533781399.html | AliExpress Choice | Lowest Price Option* | 
+ | M3x16mm Screws (100 piece) | 1 | $0.99 | https://www.aliexpress.us/item/2255800046543591.html | AliExpress Choice | Lowest Price Option* | 
+ | M3x5mmx4mm heatset Inserts (100 piece) | 1 | $0.99 | https://www.aliexpress.us/item/2255800046543591.html | AliExpress Choice | Lowest Price Option* | 
  | Case | 1 | $3.50 | Local Library | Local Library | $0.05 per gram | 
  | Soldering Irorn | 1 | $39.99 | https://www.amazon.com/PINECIL-Smart-Mini-Portable-Soldering/dp/B096X6SG13 | Amazon | Pinecil: Cheapest heat adjustable soldering Iron | 
  | Soldering Stand & Sponge | 1 | $4.99 | https://www.microcenter.com/product/659033/Mini-soldering_stand_with_sponge | Micro Center | Eclipse Enterprice Mini | 
