@@ -18,7 +18,7 @@ Features:
 | Item | Quantity | Total Price | Link | Source | Notes | 
 | --- | --- | --- | --- | --- | --- | 
  | PCB (5 piece) | 1 | $12.86 | https://www.pcbway.com/QuickOrderOnline.aspx | PCB way | From Actual Checkout page (Shipping DDP with Global Direct Shipping) | 
- | Devboard | 1 | $9.99 | <amazon.com/Pre-Soldered-Microcontroller-MicroPython-CircuitPython-Interfaces/dp/B09NNVNW7M> | Amazon | XIAO rp2040  | 
+ | Devboard | 1 | $9.99 | [<amazon.com/Pre-Soldered-Microcontroller-MicroPython-CircuitPython-Interfaces/dp/B09NNVNW7M](https://www.amazon.com/Pre-Soldered-Microcontroller-MicroPython-CircuitPython-Interfaces/dp/B09NNVNW7M)> | Amazon | XIAO rp2040  | 
  | 1N4148 THT Diodes (100 piece) | 1 | $0.99 | https://www.aliexpress.us/item/3256809192784213.html | AliExpress Choice | Lowest Price Option* | 
  | Cherry MX Switches (10 piece) | 2  | $0.99 | https://www.aliexpress.us/item/3256807705085808.html | AliExpress Choice | "Limit 1 per color:1 white | 1 silver" | 
  | 0.91 in. OLED (5 piece) | 1 | $0.99 | https://www.aliexpress.us/item/3256808453793642.html | AliExpress Choice | Lowest Price Option* | 
