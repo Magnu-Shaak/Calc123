@@ -14,6 +14,8 @@ Features:
 
 ## BOM
 - Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url)
+
+
  
  | Item | Quantity | Total Price | Link | Source | Notes | 
  | --- | --- | --- | --- | --- | --- | 
