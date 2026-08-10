@@ -29,7 +29,7 @@ Features:
  | Soldering Irorn | 1 | $39.99 | https://www.amazon.com/PINECIL-Smart-Mini-Portable-Soldering/dp/B096X6SG13 | Amazon | Pinecil: Cheapest heat adjustable soldering Iron | 
  | Soldering Stand & Sponge | 1 | $4.99 | https://www.microcenter.com/product/659033/Mini-soldering_stand_with_sponge | Micro Center | Eclipse Enterprice Mini | 
  | Solder (50 g) | 1 | $8.99 | https://www.amazon.com/MAIYUM-63-37-Solder-Electrical-Soldering/dp/B075WB98FJ?th=1 | Amazon | "MAIYUM 63-37 Tin-Lead Rosin Core Solder Wire 0.8mm,50g g" | 
- | Solder Wick | 1 | $4.99 | https://www.microcenter.com/product/693022/Desoldering_Wick | MicroCenter | iFixit | 
+ | Solder Wick / Braid | 1 | $12.98 | https://www.homedepot.com/pep/Weller-Desoldering-Wick-Wire-2-5mm-0-1-in-1-6m-63-in-WLWIRDESW/335954017 | Home Depot | Wellers Brand, Cheapest Currently Avalible | 
  | Total Cost | 1 | $92.24 | https://excel.cloud.microsoft/en-us/ | Microsoft Exel (to double check) |  | 
  | *Footnote |  |  | *Lowest Price Option. Smaller quantities only avalible for same price |  |   | 
 
