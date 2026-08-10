@@ -44,9 +44,7 @@ Code is visible under the Firmware folder
 
 ## Asembly
 
-BOM (Bill of Materials) - [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.csv](url)
-
- [Insert BOM table here]
+BOM (Bill of Materials) - above, or at [https://github.com/Magnu-Shaak/Calc123/blob/main/BOM.csv](url)
 
 0 - Gather your Materials (PCB, Case parts, Devboard, and a usb-c to [something] cable to connect to your computer
 
