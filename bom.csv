@@ -1,8 +1,8 @@
-Item, Quantity, Total Price, Link, Source, Notes
+Item, Quantity, Total Price, Link, Source, Notes (TAX NOT INCLUDED)
 PCB (5 peice), 1, $7.64, https://www.pcbway.com/QuickOrderOnline.aspx, PCB way, From Actual Checkout page (Shipping DDP with Global Direct Shipping)
 Devboard, 1, $9.99, https://www.amazon.com/Pre-Soldered-Microcontroller-MicroPython-CircuitPython-Interfaces/dp/B09NNVNW7M, Amazon, XIAO rp2040 
-1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Choice, Lowest Price Option*
-Cherry MX Switches (10 peice), 2 , $1.98, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Choice, "Limit 1 per color:1 white, 1 silver"
+Cherry MX Switches (10 peice), 2 , $11.14, https://www.aliexpress.us/item/3256807705085808.html, AliExpress Choice, "Limit 1 per color:1 white, 1 silver"
+
 0.91 in. OLED (5 peice), 1, $0.99, https://www.aliexpress.us/item/3256808453793642.html, AliExpress Choice, Lowest Price Option*
 White Keycaps (50 peice; white), 1, $0.99, https://www.aliexpress.us/item/3256810533781399.html, AliExpress Choice, Lowest Price Option*
 M3x16mm Screws (100 peice), 1, $0.99, https://www.aliexpress.us/item/2255800046543591.html, AliExpress Choice, Lowest Price Option*
@@ -15,3 +15,6 @@ Solder Wick, 1, $12.98, https://www.homedepot.com/pep/Weller-Desoldering-Wick-Wi
 , , , , , 
 Total Cost, 1, , https://excel.cloud.microsoft/en-us/, Microsoft Exel,
 *Footnote, , , *Lowest Price Option. Smaller quantities only avalible for same price, ,  
+
+
+1N4148 THT Diodes (100 peice), 1, $0.99, https://www.aliexpress.us/item/3256809192784213.html, AliExpress Choice, Lowest Price Option* 
