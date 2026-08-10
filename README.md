@@ -30,6 +30,7 @@ Features:
  | Soldering Stand & Sponge | 1 | $4.99 | https://www.microcenter.com/product/659033/Mini-soldering_stand_with_sponge | Micro Center | Eclipse Enterprice Mini | 
  | Solder (50 g) | 1 | $8.99 | https://www.amazon.com/MAIYUM-63-37-Solder-Electrical-Soldering/dp/B075WB98FJ?th=1 | Amazon | "MAIYUM 63-37 Tin-Lead Rosin Core Solder Wire 0.8mm,50g g" | 
  | Solder Wick | 1 | $4.99 | https://www.microcenter.com/product/693022/Desoldering_Wick | MicroCenter | iFixit | 
+ | Total Cost | 1 | $92.24 | <https://excel.cloud.microsoft/en-us/> | Microsoft Exel (to double check) |  | 
  | *Footnote |  |  | *Lowest Price Option. Smaller quantities only avalible for same price |  |   | 
 
 ## Demo links
