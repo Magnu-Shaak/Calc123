@@ -6,18 +6,18 @@ I Don't believe anyone will see this, but if you are, use the oled_layer_extensi
 ## List of Supported features below:
 
 Event Updating:
-    Layer Changes
+- Layer Changes
     
     
 Display Chips:
-    SSD 1306
+- SSD 1306
 
 ## Configure
 ```python
 # main.py or code.py
 from oled_extension import init_oled                # Import
 
-# Name this whatever, just be consistant with the name in the init_oled function
+# Name this whatever, just be consistent with the name when you call the  init_oled function
 layer_names_map = {  
     0: "Numpad",       # Map the text displayed to layer index
     1: "Functions",    # If no text is defined, it defaults to "Layer x"
@@ -30,4 +30,4 @@ init_oled(keyboard, layer_names_map, scl_pin, sda_pin, display_hight=32, display
 init_oled(keyboard, layer_names_map, board.D5, board.D4, 64, 128, 0x3C)
 ```
 ## Other
-Comment on this repo if you want me to add anythin. Image support and Mod Layers as events will probably be added the quickest.
+Comment on this repo if you want me to add anythin. Image support and Mod Layers as events will be added promptly upon request.
