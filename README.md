@@ -13,7 +13,7 @@ Features:
 <img width="845" height="480" alt="image" src="https://github.com/user-attachments/assets/cdfa2535-12f6-4281-813e-846257810732" />
 
 ## BOM
-- Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url)
+Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url)
 
 
  
