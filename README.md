@@ -1,14 +1,16 @@
 # Numpad
 A a Number pad accessory that also works as a stand-alone calculator!
 
-If you're like me, you've had to endure a really cheap laptop, like Chromebook. These laptops typically have very compact keyboards, due to their small size. My project restores the traditional Number pad to the keyboard. Additionally, It also servs as a macropad, for those times (like 99.9% of the time) where you arn't going to use a number pad. During these times, you can use it for all your shortcut needs! (like CAD hotkeys)
+If you're like me, you've found yourself in a situation where you need to do something, and hotkeys would be a game changer, but you don't have the space on your tiny keyboard. Well, with Numpad, look no further. Numpad is a 4x4 macropad, with a 0.91 inch OLED display. Running on KMK, you can easily reassign keys, and even add multiple layers. I designed this around using a spreadsheet, and have added a local calculator mode to it as well.
 
 Features:
 - Numberpad (0-9, 4 operations,"=", ".")
     + Has a built in Local Calculator that displays on the OLED
 - Custom Shortcuts Layer
-- Displays Layer on OLED
+- OLED Display for Layer info and local calculator
     + Use it yourself: Info at [https://github.com/Magnu-Shaak/Calc123/blob/main/oled_extention.md](url)
+- Dependancies: KMK-firmware, adafruit_bus_service, adafruit_display_text, addafruit_displayio_ssd1306
+    + More info in Assembly
 
 3d render in Onshape
 
