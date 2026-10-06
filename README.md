@@ -1,5 +1,7 @@
 # Numpad
-Making a Numpad accessory that also works as a stand-alone calculator!
+A a Number pad accessory that also works as a stand-alone calculator!
+
+If you're like me, you've had to endure a really cheap laptop, like Chromebook. These laptops typically have very compact keyboards, due to their small size. My project restores the traditional Number pad to the keyboard. Additionally, It also servs as a macropad, for those times (like 99.9% of the time) where you arn't going to use a number pad. During these times, you can use it for all your shortcut needs! (like CAD hotkeys)
 
 Features:
 - Numberpad (0-9, 4 operations,"=", ".")
