@@ -35,6 +35,7 @@ Also available at [https://github.com/Magnu-Shaak/Calc123/blob/main/bom.csv](url
 | DigiKey: Shipping & Tariff | 7 (32 pieces) | 7.01        | https://www.digikey.com/ordering/shoppingcart                                         | Digikey     | Shipping with USPS Ground Advantage (4.99)  |
 | DigiKey: Tax               | 7 (32 pieces) | 2.25        | https://www.digikey.com/ordering/shoppingcart                                         | DigiKey     | Local Tax                                   |
 | Amazon: Shipping and Tax   | 2 (2 pieces)  | 1.4         |                                                                                       | Amazon      | Free shipping with prime (personal account) |
+| | | | | | |
 | Total                      | 35            | 68.21       |                                                                                       |             |                                             |
 
 ## Demo links
