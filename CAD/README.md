@@ -3,4 +3,4 @@ In this Folder (CAD):
 
 In Production Folder:
 - Individual Part Files
-- 3d printing aranged file (All Parts)
+- All In One 3d printing file (All Parts)
